@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example</groupId>
+	<artifactId>spring-boot</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-boot Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<java.version>1.8</java.version>
+		<spring.boot.version>1.5.8.RELEASE</spring.boot.version>
+		<servlet.version>3.1.0</servlet.version>
+		<junit.version>4.12</junit.version>
+	</properties>
+	
+	<dependencies>
+		<!-- spring boot starter web dependency -->
+		<dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-web</artifactId>
+        	<version>${spring.boot.version}</version>
+		</dependency>
+		<!-- junit dependency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<!-- overriding  -->
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- javax.servlet dependency -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+	
+	<build>
+		<finalName>spring-boot</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
