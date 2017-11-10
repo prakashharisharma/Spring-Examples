@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<wsdl:definitions name="StudentDetails"
+  targetNamespace="http://tutorialsdesk.com/services/studentdetails"
+  xmlns:tns="http://tutorialsdesk.com/services/studentdetails" xmlns:types="http://tutorialsdesk.com/types/studentdetails"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tutorialsdesk.com/types/studentdetails"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+      attributeFormDefault="unqualified" version="1.0">
+
+      <xsd:element name="student">
+        <xsd:complexType>
+          <xsd:sequence>
+          <xsd:element name="rollNumber" type="xsd:string" />
+            <xsd:element name="firstName" type="xsd:string" />
+            <xsd:element name="lastName" type="xsd:string" />
+            <xsd:element name="dob" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="rollNumber">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="rollNumber" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="GetStudentRequest">
+    <wsdl:part name="rollNumber" element="types:rollNumber" />
+  </wsdl:message>
+
+  <wsdl:message name="GetStudentResponse">
+    <wsdl:part name="student" element="types:student" />
+  </wsdl:message>
+
+  <wsdl:portType name="StudentDetails_PortType">
+    <wsdl:operation name="getStudent">
+      <wsdl:input message="tns:GetStudentRequest" />
+      <wsdl:output message="tns:GetStudentResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="StudentDetails_SoapBinding" type="tns:StudentDetails_PortType">
+    <soap:binding style="document"
+      transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getStudent">
+      <soap:operation
+        soapAction="http://tutorialsdesk.com/services/studentdetails/getStudent" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="StudentDetails_Service">
+    <wsdl:documentation>Student Details service</wsdl:documentation>
+    <wsdl:port name="StudentDetails_Port" binding="tns:StudentDetails_SoapBinding">
+      <soap:address location="http://localhost:8080/tutorialsdesk/ws/studentdetails" />
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>
