@@ -6,7 +6,7 @@
 <head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="<c:url value="/css/style.css" />">
-<link rel="stylesheet" href="${urls.getForLookupPath('/css/style.css')}" />">
+<link rel="stylesheet" href="${urls.getForLookupPath('/css/style.css')}" >
 
 </head>
 <body>
