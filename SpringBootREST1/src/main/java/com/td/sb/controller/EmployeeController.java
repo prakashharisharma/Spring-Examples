@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.td.sb.model.Employee;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/")
 public class EmployeeController {
 	
 	private final static List<Employee> listOfEmployees = new ArrayList<>();;
@@ -24,15 +24,24 @@ public class EmployeeController {
 		createEmployeeList();
 	}
 	
-	@GetMapping(value="/")
+
+	@GetMapping(value="/hi/")
+	public String sayHello() {
+		
+		System.out.println("AAP2");
+		
+		return "Hello !";
+	}
+	
+	@GetMapping(value="/employees/")
 	public List<Employee> getEmployees() {
 		
-		System.out.println("AAP1");
+		System.out.println("AAP2");
 		
 		return listOfEmployees.stream().sorted((e1,e2) -> e1.getEmpId()-e2.getEmpId()).collect(Collectors.toList());
 	}
 
-	@PostMapping(value="/")
+	@PostMapping(value="/employees/")
 	public ResponseEntity<?> createEmployee(@RequestBody Employee emp ) {
 		System.out.println("EmployeeController.createEmployee()" + emp.getEmpId());
 		
@@ -43,7 +52,7 @@ public class EmployeeController {
 		return ResponseEntity.ok("Employee created");
 	}
 	
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/employees/{id}")
 	public Employee getEmployeeById(@PathVariable int id) {
 		List<Employee> listOfEmployees = createEmployeeList();
 		
