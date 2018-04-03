@@ -19,4 +19,5 @@ public class HelloWorldController {
 	public ModelAndView firstPage() {
 		return new ModelAndView("welcome");
 	}
+	
 }
