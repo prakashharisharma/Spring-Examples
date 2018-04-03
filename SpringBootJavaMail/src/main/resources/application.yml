@@ -1,9 +1,9 @@
 spring:
   mail:
-    host: linuxservice.oneshield.com
+    host: mailhost
     port: 25
-    username: phsharma
-    password: oneshield4
+    username: username
+    password: password
     
     properties:
       mail:
